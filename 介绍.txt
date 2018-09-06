@@ -1,0 +1,34 @@
+安装 ，运行和配置Nginx for windows
+
+安装
+node同理自己安装
+从http://nginx.org/en/download.html页面下，建议下载stable版本
+然后解压即可
+
+运行和停止nginx的方式
+
+1. 在文件管理器中直接运行nginx，在任务管理器中结束工作进程和守护进程即可停止nginx服务
+2. 命令行方式运行nginx  ,执行nginx,exe即可运行nginx服务（这种启动后只能在任务管理器关闭，发生变化同步执行；；不用刷新效果即出现）
+    在wendows中，使用start /b nginx  即可异步执行nginx(每次执行要重刷新)
+	
+    停止nginx服务：nginx -s stop
+    重启nginx服务： nginx -s reload
+    测试nginx.conf配置是够正确： nginx -t
+
+配置
+    修改默认http端口（80），修改默认的web根目录和默认页
+	修改nginx.conf
+    server {
+        listen       80;  修改端口号
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html;  根目录（相对于启动文件:nginx.exe的目录）
+            index  index.html index.htm index.php;  入口文件
+        }
+	....
+      }
